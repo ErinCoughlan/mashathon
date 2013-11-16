@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{%  load staticfiles  %}
+<html lang="en" id="mashmaker-home">
+<head>
+  <title>MashMaker</title>
+  <link rel="stylesheet" type="text/css" href="{% static "css/global.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/home.css" %}">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="{% static "js/dancer.js" %}"></script>
+    <script src="{% static "js/waveform.js" %}"></script>
+    <script src="{% static "js/mashmaker/main.js" %}"></script>
+</head>
+<body>
+	<div id="pageHead" role="banner">
+		<h1 id="title" class="center">MashMaker</h1>
+	</div>
+  <div id="globalContainer">
+			<div id="content">
+				<div id="contentArea" role="main">
+          <div class="contentSection">
+            <div class="upload">
+              <h2 class="uploadTitle">Upload a file...</h2>
+              <form>
+                <input class="longInput" type="text" name="filename">
+                <input type="file" name="fileSelector" accept=".mp3">
+              </form>
+              <h2 class="uploadTitle">Or select one below...</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="visual">
+
+      </div>
+  </div>
+</body>
+</html>
