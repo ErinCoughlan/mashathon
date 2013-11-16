@@ -12,6 +12,15 @@ function upload() {
 };
 
 
+function autoUpload(songName) {
+    document.getElementById('player').src = "/static/" + songName;
+    //document.getElementById('player').play();
+
+    // Send the audio file to the server
+    chooseSong(songName);
+}
+
+
 function previewSong(songSrc) {
     var elem = document.getElementById('preview');
     elem.innerHTML = '<audio src="' + songSrc + '" controls="controls">';
@@ -19,11 +28,10 @@ function previewSong(songSrc) {
 
 
 function chooseSong(songName) {
-    var dataObject = { 'filename': songName};
-
     var textBox = document.getElementById('longInput');
     textBox.value = songName;
 
+    var dataObject = { 'filename': songName};
 	// Actually submit the rating to the database
     $.ajax({
     	type: 'POST',
