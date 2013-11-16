@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {%  load staticfiles  %}
-<html>
+<html lang="en" id="mashmaker-home">
 <head>
   <title>MashMaker</title>
   <link rel="stylesheet" type="text/css" href="{% static "css/global.css" %}">
@@ -8,17 +8,24 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
-  <div class="center header">
-    <h1 class="title">MashMaker</h1>
-  </div>
-  <div class="content">
-    <h2 class="uploadTitle">upload a file...</h2>
-    <form id="upload">
-      <input type="file" name="fileSelector">
-      <input type="text" name="filename">
-    </form>
-
-    <h2 class="uploadTitle">Or select one below...</h2>
+	<div id="pageHead" role="banner">
+		<h1 id="title" class="center">MashMaker</h1>
+	</div>
+  <div id="globalContainer">
+			<div id="content">
+				<div id="contentArea" role="main">
+          <div class="contentSection">
+            <div class="upload">
+              <h2 class="uploadTitle">Upload a file...</h2>
+              <form>
+                <input class="longInput" type="text" name="filename">
+                <input type="file" name="fileSelector" accept=".mp3">
+              </form>
+              <h2 class="uploadTitle">Or select one below...</h2>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </body>
 </html>

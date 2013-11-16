@@ -1,0 +1,59 @@
+#title {
+	color: #558c89;
+	display: inline-block;
+	font-weight: bold;
+    font-size: 60px;
+	margin: 20px 0px;
+	text-align: center;
+    width: 100%;
+	zoom: 1;
+}
+
+#pageHead {
+    margin: 0px auto;
+    width: 100%;
+}
+
+#globalContainer {
+	clear: both;
+	margin: 0 auto;
+	position: relative;
+	width: 981px;
+	zoom: 1;
+}
+
+#content {
+	margin: 0;
+	min-height: 100px;
+	outline: none;
+	padding: 0;
+	width: auto;
+}
+
+#contentArea {
+	margin-right: -1px;
+	outline: none;
+	padding-left: 1px;
+	position: relative;
+	word-wrap: break-word;
+	width: 981px !important;
+}
+
+.contentSection {
+	background: #fff;
+	border: 1px solid #d3d6db;
+		-webkit-border-radius: 3px 3px 3px 3px;
+	border-bottom: 0;
+	border-top: 0;
+	margin: 0;
+    min-height: 500px;
+	padding: 0;
+}
+
+.upload {
+    padding: 20px;
+}
+
+.longInput {
+    width: 400px;
+}
