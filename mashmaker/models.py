@@ -1,9 +1,11 @@
 from django.db import models
 from json_field import JSONField
+from django.core.files import File
 
 # Create your models here.
 
 class trackInfo(models.Model):
+    filePath = models.CharField(max_length=255)
     title = models.CharField(max_length=127)
     danceability = models.FloatField()
     energy = models.FloatField()
@@ -18,10 +20,10 @@ class trackInfo(models.Model):
     beats = models.CharField(max_length=10000)
 
 
-    def __init__(self, theTrack):
+    def __init__(self, theTrack, trackFilePath):
         super(trackInfo, self).__init__()
+        self.filePath = trackFilePath
         self.title = theTrack.meta['title'] if theTrack.meta['title'] is not None else "unknown"
-
         self.danceability = theTrack.danceability if theTrack.danceability is not None else -1
         self.energy = theTrack.energy if theTrack.energy is not None else -1
         self.loudness = theTrack.loudness if theTrack.loudness is not None else -1

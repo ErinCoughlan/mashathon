@@ -23,10 +23,11 @@ def AnalyzeMP3Files():
         f = open(file)
         theTrack = track.track_from_file(f, 'mp3')
         theTrack.get_analysis()
-        trackObj = models.trackInfo(theTrack)
+        trackObj = models.trackInfo(theTrack,file)
         try: print theTrack.title
         except: print "unknown track"
         trackObj.save()
+        f.close()
 
 
 
