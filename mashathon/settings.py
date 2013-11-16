@@ -12,6 +12,10 @@ import local_settings
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+TEMPLATE_DIRS = os.path.join(BASE_DIR, "templates")
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),
+                    os.path.join(BASE_DIR, "music/homework"),
+                    os.path.join(BASE_DIR, "music/pop:dance"))
 
 
 # Quick-start development settings - unsuitable for production
@@ -28,6 +32,7 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -40,6 +45,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'mashmaker',
     'json_field',
+
+    #'pyechonest',
+    #'pybrain',
+    #'remix',
 )
 
 MIDDLEWARE_CLASSES = (
