@@ -15,7 +15,6 @@ body, button, input, label, select, td, textarea {
 a {
 	color: #3b5998;
 	cursor: pointer;
-	text-decoration: none;
 }
 
 h1 {
@@ -31,6 +30,10 @@ ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+}
+
+input[type='file'] {
+  color: transparent;
 }
 
 img {

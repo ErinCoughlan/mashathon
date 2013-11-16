@@ -32,6 +32,7 @@
 
 #contentArea {
 	margin-right: -1px;
+    margin-bottom: 50px;
 	outline: none;
 	padding-left: 1px;
 	position: relative;
@@ -54,6 +55,6 @@
     padding: 20px;
 }
 
-.longInput {
+#longInput {
     width: 400px;
 }

@@ -13,7 +13,9 @@ import local_settings
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 TEMPLATE_DIRS = os.path.join(BASE_DIR, "templates")
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),
+                    os.path.join(BASE_DIR, "music/homework"),
+                    os.path.join(BASE_DIR, "music/pop:dance"))
 
 
 # Quick-start development settings - unsuitable for production
@@ -43,9 +45,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'mashmaker',
 
-    'pyechonest',
-    'pybrain',
-    'remix',
+    #'pyechonest',
+    #'pybrain',
+    #'remix',
 )
 
 MIDDLEWARE_CLASSES = (
