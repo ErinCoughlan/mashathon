@@ -12,5 +12,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^home/', 'mashmaker.views.home'),
+    url(r'^visual/', 'mashmaker.views.visual'),
+    url(r'^music/', 'mashmaker.views.music'),
     url(r'^player/', 'mashmaker.views.player')
 )
