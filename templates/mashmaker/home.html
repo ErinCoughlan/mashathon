@@ -17,6 +17,7 @@
 				<div id="contentArea" role="main">
           <div class="contentSection">
             <div class="upload">
+              <div id="response" class="center">Hello</div>
               <h2 class="uploadTitle">Upload a file...</h2>
               <div id="preview"><audio id="player" controls="controls"></div>
               <form enctype="multipart/form-data">
@@ -24,11 +25,12 @@
                 <input id="fileInput" type="file" name="filename" accept=".mp3">
               </form>
               <h2 class="uploadTitle">Or select one below...</h2>
-              {% for filename in file_list %}
-                <div>
-                  <a href="#" onclick="chooseSong()">{{ filename }}</a>
-                </div>
-              {% endfor %}
+                {% for filename in file_list %}
+                  <div>
+
+                    <a href="#" onclick="chooseSong('{{ filename }}')">{{ filename }}</a>
+                  </div>
+                {% endfor %}
             </div>
           </div>
         </div>

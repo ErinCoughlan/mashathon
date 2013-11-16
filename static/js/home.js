@@ -19,20 +19,23 @@ function previewSong(songSrc) {
 };
 
 
-function chooseSong(e) {
-    var dataObject = {};
-    //var dataObject = { 'url': songName};
+function chooseSong(songName) {
+    var dataObject = { 'filename': songName};
 
 	// Actually submit the rating to the database
     $.ajax({
     	type: 'POST',
-    	url: 'player/',
+    	url: '../player/',
      	data: dataObject,
      	success: function (msg){
-     		//alert(msg);
+            var elem = document.getElementById("response");
+     		if (msg.HTTPRESPONSE == 1) {
+                elem.innerHTML = 'Successfully uploaded the song. Analyzing...';
+            } else {
+                elem.innerHTML = 'Failed upload. Please try again.';
+            }
       	}
     });
-    e.preventDefault();
 }
 
 
