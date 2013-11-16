@@ -21,6 +21,7 @@ def home(request):
     musicDir = os.path.join(BASE_DIR, "music")
     files = os.listdir(musicDir + "/homework") + os.listdir(musicDir + "/pop:dance")
     files = filter( lambda f: not f.startswith('.'), files)
+    files = filter( lambda f: not "'" in f, files)
     shuffle(files)
     return render_to_response('mashmaker/home.html', {"file_list": files})
 

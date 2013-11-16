@@ -2,14 +2,13 @@
  * Set the text to the filename and begin upload and analyze.
  */
 "use strict";
-function upload(e) {
+function upload() {
     // Change the text
-    var textBox = document.getElementById('longInput');
     var input = document.getElementById('fileInput');
     var filename = $('input[type=file]').val().split('\\').pop();
-    textBox.value = filename;
 
     // Send the audio file to the server
+    chooseSong(filename);
 };
 
 
@@ -22,6 +21,9 @@ function previewSong(songSrc) {
 function chooseSong(songName) {
     var dataObject = { 'filename': songName};
 
+    var textBox = document.getElementById('longInput');
+    textBox.value = songName;
+
 	// Actually submit the rating to the database
     $.ajax({
     	type: 'POST',
@@ -30,9 +32,9 @@ function chooseSong(songName) {
      	success: function (msg){
             var elem = document.getElementById("response");
      		if (msg.HTTPRESPONSE == 1) {
-                elem.innerHTML = 'Successfully uploaded the song. Analyzing...';
+                elem.innerHTML = '<div class="success">Successfully uploaded the song. Analyzing...</div>';
             } else {
-                elem.innerHTML = 'Failed upload. Please try again.';
+                elem.innerHTML = '<div class="fail">Failed upload. Please try again.</div>';
             }
       	}
     });
@@ -48,7 +50,7 @@ $(document).ready(function() {
 
     freader.onload = function(e) {
         document.getElementById('player').src = e.target.result;
-        document.getElementById('player').play();
+        //document.getElementById('player').play();
     }
 
     fileInput.onchange = function(e) {
