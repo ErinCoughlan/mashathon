@@ -18,9 +18,10 @@
           <div class="contentSection">
             <div class="upload">
               <h2 class="uploadTitle">Upload a file...</h2>
+              <div id="preview"><audio id="player" controls="controls"></div>
               <form>
                 <input id="longInput" type="text">
-                <input id="selector" type="file" name="filename" accept=".mp3" onchange="upload()">
+                <input id="fileInput" type="file" name="filename" accept=".mp3">
               </form>
               <h2 class="uploadTitle">Or select one below...</h2>
               {% for filename in file_list %}
