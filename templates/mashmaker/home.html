@@ -19,14 +19,14 @@
             <div class="upload">
               <h2 class="uploadTitle">Upload a file...</h2>
               <div id="preview"><audio id="player" controls="controls"></div>
-              <form>
+              <form enctype="multipart/form-data">
                 <input id="longInput" type="text">
                 <input id="fileInput" type="file" name="filename" accept=".mp3">
               </form>
               <h2 class="uploadTitle">Or select one below...</h2>
               {% for filename in file_list %}
                 <div>
-                  <a href="{% static filename %}">{{ filename }}</a>
+                  <a href="{% static filename %}" onclick="chooseSong({% static filename %})">{{ filename }}</a>
                 </div>
               {% endfor %}
             </div>

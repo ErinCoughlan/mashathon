@@ -9,12 +9,19 @@ function upload(e) {
     var filename = $('input[type=file]').val().split('\\').pop();
     textBox.value = filename;
 
-    // Upload the audio file
+    // Send the audio file to the server
 };
 
+
 function previewSong(songSrc) {
-    return '<audio src="' + songSrc + '" controls="controls">';
+    var elem = document.getElementById('preview');
+    elem.innerHTML = '<audio src="' + songSrc + '" controls="controls">';
 };
+
+
+function chooseSong(songName) {
+
+}
 
 
 /** Submit handler through jquery */
