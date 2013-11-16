@@ -66,3 +66,14 @@
     text-align: center;
     width: 100%;
 }
+
+.waveform {
+    height: 50px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+#wave1 {
+    height: inherit;
+    width: inherit;
+}

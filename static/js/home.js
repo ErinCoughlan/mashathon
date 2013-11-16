@@ -1,6 +1,5 @@
-/**
- * Set the text to the filename and begin upload and analyze.
- */
+var dancer, prevDancer;
+
 "use strict";
 function upload() {
     // Change the text
@@ -13,8 +12,7 @@ function upload() {
 
 
 function autoUpload(songName) {
-    document.getElementById('player').src = "/static/" + songName;
-    //document.getElementById('player').play();
+    doTheWave("/static/" + songName);
 
     // Send the audio file to the server
     chooseSong(songName);
@@ -53,11 +51,22 @@ function chooseSong(songName) {
 $(document).ready(function() {
     //previewSong("song");
 
+    /*
+     * Dancer.js magic
+     */
+    Dancer.setOptions({
+        flashSWF : '../../lib/soundmanager2.swf',
+        flashJS  : '../../lib/soundmanager2.js'
+    });
+    dancer = new Dancer();
+
+    // For reading in files
     var fileInput = document.getElementById("fileInput");
     var freader = new FileReader();
 
     freader.onload = function(e) {
-        document.getElementById('player').src = e.target.result;
+        doTheWave(e.target.result);
+        //document.getElementById('player').src = e.target.result;
         //document.getElementById('player').play();
     }
 
@@ -68,3 +77,28 @@ $(document).ready(function() {
         upload();
     }
 });
+
+
+/** Dancer everything... */
+function doTheWave(AUDIO_FILE) {
+    var audio = document.getElementById("player");
+
+    var
+        waveform = document.getElementById( 'wave1' ),
+        ctx = waveform.getContext( '2d' );
+
+    var kick = dancer.createKick({
+        onKick: function () {
+            ctx.strokeStyle = '#ff0077';
+        },
+        offKick: function () {
+            ctx.strokeStyle = '#666';
+        }
+    }).on();
+
+    dancer
+        .load({ src: AUDIO_FILE})
+        .waveform( waveform, { strokeStyle: '#666', strokeWidth: 2 });
+
+    dancer.play();
+};

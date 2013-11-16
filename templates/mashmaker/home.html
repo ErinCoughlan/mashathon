@@ -7,6 +7,9 @@
   <link rel="stylesheet" type="text/css" href="{% static "css/home.css" %}">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" src="{% static "js/home.js" %}"></script>
+  <script src="{% static "js/dancer.js" %}"></script>
+  <script src="{% static "js/waveform.js" %}"></script>
+  <script src="{% static "js/dancer.waveform.js" %}"></script>
 </head>
 <body>
 	<div id="pageHead" role="banner">
@@ -18,8 +21,10 @@
           <div class="contentSection">
             <div class="upload">
               <div id="response" class="center"></div>
+              <div class="waveform" class="center">
+                <canvas id="wave1"></canvas>
+              </div>
               <h2 class="uploadTitle">Upload a file...</h2>
-              <div id="preview"><audio id="player" controls="controls"></div>
               <form enctype="multipart/form-data">
                 <input id="longInput" type="text">
                 <input id="fileInput" type="file" name="filename" accept=".mp3">
