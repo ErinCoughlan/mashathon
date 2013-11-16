@@ -44,7 +44,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'mashmaker',
-    'json_field',
 
     #'pyechonest',
     #'pybrain',
