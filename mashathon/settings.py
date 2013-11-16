@@ -17,7 +17,6 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),
                     os.path.join(BASE_DIR, "music/homework"),
                     os.path.join(BASE_DIR, "music/pop:dance"))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -86,9 +85,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-TEMPLATE_DIRS = os.path.join(BASE_DIR, "mashathon/templates")
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
