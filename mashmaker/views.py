@@ -19,3 +19,8 @@ def home(request):
     files = filter( lambda f: not f.startswith('.'), files)
     shuffle(files)
     return render_to_response('mashmaker/home.html', {"file_list": files})
+
+def player(request):
+    # mainpage
+
+    return render_to_response('mashmaker/player.html', {})

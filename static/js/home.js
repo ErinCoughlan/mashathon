@@ -19,8 +19,20 @@ function previewSong(songSrc) {
 };
 
 
-function chooseSong(songName) {
+function chooseSong(e) {
+    var dataObject = {};
+    //var dataObject = { 'url': songName};
 
+	// Actually submit the rating to the database
+    $.ajax({
+    	type: 'POST',
+    	url: 'player/',
+     	data: dataObject,
+     	success: function (msg){
+     		//alert(msg);
+      	}
+    });
+    e.preventDefault();
 }
 
 

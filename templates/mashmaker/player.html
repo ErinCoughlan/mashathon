@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {%  load staticfiles  %}
-<html lang="en" id="mashmaker-home">
+<html lang="en" id="mashmaker-player">
 <head>
   <title>MashMaker</title>
   <link rel="stylesheet" type="text/css" href="{% static "css/global.css" %}">
@@ -16,20 +16,7 @@
 			<div id="content">
 				<div id="contentArea" role="main">
           <div class="contentSection">
-            <div class="upload">
-              <h2 class="uploadTitle">Upload a file...</h2>
-              <div id="preview"><audio id="player" controls="controls"></div>
-              <form enctype="multipart/form-data">
-                <input id="longInput" type="text">
-                <input id="fileInput" type="file" name="filename" accept=".mp3">
-              </form>
-              <h2 class="uploadTitle">Or select one below...</h2>
-              {% for filename in file_list %}
-                <div>
-                  <a href="#" onclick="chooseSong()">{{ filename }}</a>
-                </div>
-              {% endfor %}
-            </div>
+
           </div>
         </div>
       </div>
