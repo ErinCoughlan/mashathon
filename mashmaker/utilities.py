@@ -3,9 +3,10 @@ from os import walk
 from os.path import join
 from pyechonest import config,track
 from random import randint, choice
+import echonest.remix.audio as audio
 
 import models
-
+from models import trackInfo
 config.ECHO_NEST_API_KEY = 'DY8SILMY87LES3ADW'
 
 myMusicPath = "music"
@@ -49,10 +50,29 @@ def GetNextSong(firstSong):
 
 def ChooseNextSong(previousSong):
     numSongs = models.trackInfo.objects.latest('id').id
-    nextSong = models.trackInfo.objects.filter(id=randint(1,numSongs))
-    nextSongStartTime = choice(eval(nextSong.beats))['start']
-    previousSongEndTime = choice(eval(previousSong.beats))['start']
-    return (nextSong, nextSongStartTime, previousSongEndTime)
+    nextSong = trackInfo.objects.get(pk=randint(1,numSongs))
+    eval(nextSong.beats)
+    nextSongStartBeat = choice(range(len(eval(nextSong.beats))))
+    previousSongEndTime = choice(range(len(eval(previousSong.beats))))
+    return (nextSong, nextSongStartBeat, previousSongEndTime)
 
-def SendMP3OfSong(nextSong, nextSongStartTime):
-    f = open(nextSong.filePath)
+def SendMP3OfSong(nextSong, nextSongStartBeat):
+    collect = audio.AudioQuantumList()
+    audiofile = audio.LocalAudioFile(str(nextSong.filePath))
+
+    oldBeats = audiofile.analysis.beats
+    beats = []
+    i = 0
+
+    for beat in oldBeats:
+        if i >= nextSongStartBeat: collect.append(beat.children()[0])
+        i += 1
+
+    for beat in beats:
+        collect.append(beat.children()[0])
+
+    out = audio.getpieces(audiofile, collect)
+
+    # TODO: actual path here
+    out.encode("/tmp/".join(nextSong.title))
+
