@@ -14,5 +14,8 @@ urlpatterns = patterns('',
     url(r'^home/', 'mashmaker.views.home'),
     url(r'^visual/', 'mashmaker.views.visual'),
     url(r'^music/', 'mashmaker.views.music'),
-    url(r'^player/', 'mashmaker.views.player')
+    url(r'^player/', 'mashmaker.views.player'),
+    url(r'^song/', 'mashmaker.views.getNextChunk')
+
+
 )
