@@ -30,6 +30,7 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
 
 INSTALLED_APPS = (
@@ -41,6 +42,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'mashmaker',
+
+    'pyechonest',
+    'pybrain',
+    'remix',
 )
 
 MIDDLEWARE_CLASSES = (
