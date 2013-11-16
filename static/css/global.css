@@ -1,0 +1,57 @@
+body {
+	background: #ececea;
+	color: #333;
+	direction: ltr;
+	line-height: 1.28;
+	margin: 0;
+	min-width: 768px;
+}
+
+body, button, input, label, select, td, textarea {
+	font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+	font-size: 11px;
+}
+
+a {
+	color: #3b5998;
+	cursor: pointer;
+}
+
+h1 {
+	color: #333;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+input[type='file'] {
+  color: transparent;
+}
+
+img {
+	border: 0;
+}
+
+.fixed_elem {
+	position: fixed !important;
+}
+
+.rfloat {
+	float: right;
+}
+
+.lfloat {
+	float: left;
+}
+
+.center {
+	margin: 0 auto;
+}
