@@ -1,4 +1,5 @@
 var dancer, prevDancer;
+var wavesurfer;
 
 "use strict";
 function upload() {
@@ -60,6 +61,18 @@ $(document).ready(function() {
     });
     dancer = new Dancer();
 
+    // Wavesurfer is so much easier than Dancer
+    wavesurfer = Object.create(WaveSurfer);
+    var options = {
+        container: document.getElementById('waveform'),
+        waveColor: 'violet',
+        progressColor: 'purple',
+        minPxPerSec: 100,
+        scrollParent: true
+    }
+    wavesurfer.init(options);
+    document.getElementById('waveform').style.display = "none";
+
     // For reading in files
     var fileInput = document.getElementById("fileInput");
     var freader = new FileReader();
@@ -105,26 +118,10 @@ function doTheWave(AUDIO_FILE) {
 
 
 function doTheWave2(AUDIO_FILE) {
-    var wavesurfer = Object.create(WaveSurfer);
-    console.log("created");
-    console.log(wavesurfer);
-
-    var options = {
-        container: document.getElementById('waveform'),
-        waveColor: 'violet',
-        progressColor: 'purple',
-        minPxPerSec: 100,
-        scrollParent: true
-    }
-
-    wavesurfer.init(options);
-
-    console.log("initialized");
-
+    document.getElementById('waveform').style.display = "block";
     wavesurfer.on('ready', function () {
         wavesurfer.play();
     });
 
     wavesurfer.load(AUDIO_FILE);
-    console.log("loaded");
 }
