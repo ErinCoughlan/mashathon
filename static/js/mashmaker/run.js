@@ -142,13 +142,14 @@ $(function(){
     getUpdates: function() {
         var song = new Song;
         song.id = 1;
-        var done = song.fetch();
-        console.log("getUpdates");
-
-        done.done(function() {
+        var done = song.fetch({success: function() {
             AllSongs.add(song, {at: 0});
             this.getUpdates();
-        });
+        }.bind(this)});
+
+        var done = song.fetch();
+
+        console.log("getUpdates");
 
         return done;
     }
