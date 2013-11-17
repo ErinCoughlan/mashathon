@@ -79,12 +79,11 @@ $(document).ready(function() {
 
     freader.onload = function(e) {
         doTheWave2(e.target.result);
-        //document.getElementById('player').src = e.target.result;
-        //document.getElementById('player').play();
     }
 
     fileInput.onchange = function(e) {
         var files = e.target.files;
+        // Gives us e.target.result, which is a song
         freader.readAsDataURL(files[0]);
 
         upload();
@@ -121,6 +120,11 @@ function doTheWave2(AUDIO_FILE) {
     document.getElementById('waveform').style.display = "block";
     wavesurfer.on('ready', function () {
         wavesurfer.play();
+    });
+
+    wavesurfer.on('error', function () {
+        var elem = document.getElementById("response");
+        elem.innerHTML = '<div class="fail">Failed upload. Please try again.</div>';
     });
 
     wavesurfer.load(AUDIO_FILE);
