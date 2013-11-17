@@ -10,6 +10,10 @@
   <script src="{% static "js/dancer.js" %}"></script>
   <script src="{% static "js/waveform.js" %}"></script>
   <script src="{% static "js/dancer.waveform.js" %}"></script>
+  <script src="{% static "js/wavesurfer.js" %}"></script>
+  <script src="{% static "js/webaudio.js" %}"></script>
+  <script src="{% static "js/drawer.js" %}"></script>
+  <script src="{% static "js/drawer.canvas.js" %}"></script>
 </head>
 <body>
 	<div id="pageHead" role="banner">
@@ -21,9 +25,7 @@
           <div class="contentSection">
             <div class="upload">
               <div id="response" class="center"></div>
-              <div class="waveform" class="center">
-                <canvas id="wave1"></canvas>
-              </div>
+              <div id="waveform" class="center"></div>
               <h2 class="uploadTitle">Upload a file...</h2>
               <form enctype="multipart/form-data">
                 <input id="longInput" type="text">

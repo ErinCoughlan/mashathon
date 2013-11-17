@@ -12,7 +12,7 @@ function upload() {
 
 
 function autoUpload(songName) {
-    doTheWave("/static/" + songName);
+    doTheWave2("/static/" + songName);
 
     // Send the audio file to the server
     chooseSong(songName);
@@ -65,7 +65,7 @@ $(document).ready(function() {
     var freader = new FileReader();
 
     freader.onload = function(e) {
-        doTheWave(e.target.result);
+        doTheWave2(e.target.result);
         //document.getElementById('player').src = e.target.result;
         //document.getElementById('player').play();
     }
@@ -102,3 +102,29 @@ function doTheWave(AUDIO_FILE) {
 
     dancer.play();
 };
+
+
+function doTheWave2(AUDIO_FILE) {
+    var wavesurfer = Object.create(WaveSurfer);
+    console.log("created");
+    console.log(wavesurfer);
+
+    var options = {
+        container: document.getElementById('waveform'),
+        waveColor: 'violet',
+        progressColor: 'purple',
+        minPxPerSec: 100,
+        scrollParent: true
+    }
+
+    wavesurfer.init(options);
+
+    console.log("initialized");
+
+    wavesurfer.on('ready', function () {
+        wavesurfer.play();
+    });
+
+    wavesurfer.load(AUDIO_FILE);
+    console.log("loaded");
+}
