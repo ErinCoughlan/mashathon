@@ -1,5 +1,6 @@
 var dancer, prevDancer;
-var wavesurfer;
+var wavesurfer, wavesurfer2;
+var last = 0;
 
 "use strict";
 function upload() {
@@ -13,7 +14,7 @@ function upload() {
 
 
 function autoUpload(songName) {
-    doTheWave2("/static/" + songName);
+    doTheWave("/static/" + songName);
 
     // Send the audio file to the server
     chooseSong(songName);
@@ -52,17 +53,9 @@ function chooseSong(songName) {
 $(document).ready(function() {
     //previewSong("song");
 
-    /*
-     * Dancer.js magic
-     */
-    Dancer.setOptions({
-        flashSWF : '../../lib/soundmanager2.swf',
-        flashJS  : '../../lib/soundmanager2.js'
-    });
-    dancer = new Dancer();
-
     // Wavesurfer is so much easier than Dancer
     wavesurfer = Object.create(WaveSurfer);
+    wavesurfer2 = Object.create(WaveSurfer);
     var options = {
         container: document.getElementById('waveform'),
         waveColor: 'violet',
@@ -70,15 +63,24 @@ $(document).ready(function() {
         minPxPerSec: 100,
         scrollParent: true
     }
+    var options2 = {
+        container: document.getElementById('waveform2'),
+        waveColor: 'violet',
+        progressColor: 'purple',
+        minPxPerSec: 100,
+        scrollParent: true
+    }
     wavesurfer.init(options);
+    wavesurfer2.init(options2);
     document.getElementById('waveform').style.display = "none";
+    document.getElementById('waveform2').style.display = "none";
 
     // For reading in files
     var fileInput = document.getElementById("fileInput");
     var freader = new FileReader();
 
     freader.onload = function(e) {
-        doTheWave2(e.target.result);
+        doTheWave1(e.target.result);
     }
 
     fileInput.onchange = function(e) {
@@ -90,42 +92,35 @@ $(document).ready(function() {
     }
 });
 
-
-/** Dancer everything... */
+/* Wavesurfer is better than Dancer */
 function doTheWave(AUDIO_FILE) {
-    var audio = document.getElementById("player");
+    // Determine which waveform had been there longer and replace it
+    if (last == 0) {
+        document.getElementById('waveform').style.display = "block";
+        wavesurfer.on('ready', function () {
+            wavesurfer.play();
+        });
 
-    var
-        waveform = document.getElementById( 'wave1' ),
-        ctx = waveform.getContext( '2d' );
+        wavesurfer.on('error', function () {
+            var elem = document.getElementById("response");
+            elem.innerHTML = '<div class="fail">Failed upload. Please try again.</div>';
+        });
 
-    var kick = dancer.createKick({
-        onKick: function () {
-            ctx.strokeStyle = '#ff0077';
-        },
-        offKick: function () {
-            ctx.strokeStyle = '#666';
-        }
-    }).on();
+        wavesurfer.load(AUDIO_FILE);
+        last = 1;
+    } else {
+        document.getElementById('waveform2').style.display = "block";
+        wavesurfer2.on('ready', function () {
+            wavesurfer2.play();
+        });
 
-    dancer
-        .load({ src: AUDIO_FILE})
-        .waveform( waveform, { strokeStyle: '#666', strokeWidth: 2 });
+        wavesurfer2.on('error', function () {
+            var elem = document.getElementById("response");
+            elem.innerHTML = '<div class="fail">Failed upload. Please try again.</div>';
+        });
 
-    dancer.play();
-};
+        wavesurfer2.load(AUDIO_FILE);
+        last = 0;
+    }
 
-
-function doTheWave2(AUDIO_FILE) {
-    document.getElementById('waveform').style.display = "block";
-    wavesurfer.on('ready', function () {
-        wavesurfer.play();
-    });
-
-    wavesurfer.on('error', function () {
-        var elem = document.getElementById("response");
-        elem.innerHTML = '<div class="fail">Failed upload. Please try again.</div>';
-    });
-
-    wavesurfer.load(AUDIO_FILE);
 }
