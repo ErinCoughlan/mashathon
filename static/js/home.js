@@ -96,6 +96,7 @@ $(document).ready(function() {
 function doTheWave(AUDIO_FILE) {
     // Determine which waveform had been there longer and replace it
     if (last == 0) {
+        swapElements(document.getElementById('waveform'), document.getElementById('waveform2'));
         document.getElementById('waveform').style.display = "block";
         wavesurfer.on('ready', function () {
             wavesurfer.play();
@@ -109,6 +110,7 @@ function doTheWave(AUDIO_FILE) {
         wavesurfer.load(AUDIO_FILE);
         last = 1;
     } else {
+        swapElements(document.getElementById('waveform2'), document.getElementById('waveform'));
         document.getElementById('waveform2').style.display = "block";
         wavesurfer2.on('ready', function () {
             wavesurfer2.play();
@@ -123,4 +125,12 @@ function doTheWave(AUDIO_FILE) {
         last = 0;
     }
 
+}
+
+function swapElements(obj1, obj2) {
+    if (obj2.nextSibling === obj1) {
+        obj1.parentNode.insertBefore(obj2, obj1.nextSibling);
+    } else {
+        obj1.parentNode.insertBefore(obj2, obj1);
+    }
 }
