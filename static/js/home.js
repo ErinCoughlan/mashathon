@@ -107,6 +107,12 @@ function doTheWave(AUDIO_FILE) {
             elem.innerHTML = '<div class="fail">Failed upload. Please try again.</div>';
         });
 
+        // Occurs when a song ends - forced pause
+        wavesurfer.backend.on('pause', function () {
+            wavesurfer.play();
+        });
+
+        // Prevent the user from seeking
         wavesurfer.drawer.un('click');
 
         wavesurfer.load(AUDIO_FILE);
@@ -123,6 +129,12 @@ function doTheWave(AUDIO_FILE) {
             elem.innerHTML = '<div class="fail">Failed upload. Please try again.</div>';
         });
 
+        // Occurs when a song ends - forced pause
+        wavesurfer2.backend.on('pause', function () {
+            wavesurfer2.play();
+        });
+
+        // Prevent the user from seeking
         wavesurfer2.drawer.un('click');
 
         wavesurfer2.load(AUDIO_FILE);
