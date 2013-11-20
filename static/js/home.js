@@ -80,7 +80,7 @@ $(document).ready(function() {
     var freader = new FileReader();
 
     freader.onload = function(e) {
-        doTheWave1(e.target.result);
+        doTheWave(e.target.result);
     }
 
     fileInput.onchange = function(e) {
