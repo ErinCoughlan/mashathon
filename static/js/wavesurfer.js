@@ -49,8 +49,7 @@ var WaveSurfer = {
         });
 
         this.drawer.on('click', function (progress) {
-            console.log("no seek");
-            //my.seekTo(progress);
+            my.seekTo(progress);
         });
 
         this.on('progress', function (progress) {

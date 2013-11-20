@@ -107,6 +107,8 @@ function doTheWave(AUDIO_FILE) {
             elem.innerHTML = '<div class="fail">Failed upload. Please try again.</div>';
         });
 
+        wavesurfer.drawer.un('click');
+
         wavesurfer.load(AUDIO_FILE);
         last = 1;
     } else {
@@ -120,6 +122,8 @@ function doTheWave(AUDIO_FILE) {
             var elem = document.getElementById("response");
             elem.innerHTML = '<div class="fail">Failed upload. Please try again.</div>';
         });
+
+        wavesurfer2.drawer.un('click');
 
         wavesurfer2.load(AUDIO_FILE);
         last = 0;
