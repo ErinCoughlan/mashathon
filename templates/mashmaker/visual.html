@@ -6,12 +6,25 @@
   <link rel="stylesheet" type="text/css" href="{% static "css/global.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "css/home.css" %}">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script type="text/javascript" src="{% static "js/home.js" %}"></script>
-  <script src="{% static "js/dancer.js" %}"></script>
-  <script src="{% static "js/waveform.js" %}"></script>
-  <script src="{% static "js/mashmaker/main.js" %}"></script>
+{#  <script type="text/javascript" src="{% static "js/home.js" %}"></script>#}
+      <script src="{% static "js/underscore.js" %}"></script>
+
+      <script src="{% static "js/backbone.js" %}"></script>
+
+{#  <script src="{% static "js/dancer.js" %}"></script>#}
+{#  <script src="{% static "js/waveform.js" %}"></script>#}
+{#  <script src="{% static "js/mashmaker/main.js" %}"></script>#}
+   <script src="{% static "js/mashmaker/run.js" %}"></script>
 </head>
 <body>
+
+  <script type="text/template" id="song-template">
+    <div class="view">
+      <audio id="player" controls="controls" />
+    </div>
+  </script>
+
+
 	<div id="pageHead" role="banner">
 		<h1 id="title" class="center">MashMaker</h1>
 	</div>
@@ -19,7 +32,13 @@
 			<div id="content">
 				<div id="contentArea" role="main">
           <div class="contentSection">
-            <div class="visual"></div>
+            <div class="song-list">
+
+                    <div class="view">
+                        <audio id="player" controls="controls" />
+                    </div>
+
+            </div>
 
           </div>
         </div>

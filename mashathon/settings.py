@@ -15,6 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 TEMPLATE_DIRS = os.path.join(BASE_DIR, "templates")
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),
                     os.path.join(BASE_DIR, "music/homework"),
+                    os.path.join(BASE_DIR, "music/test"),
                     os.path.join(BASE_DIR, "music/pop:dance"))
 
 # Quick-start development settings - unsuitable for production

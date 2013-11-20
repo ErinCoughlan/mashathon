@@ -21,6 +21,7 @@ def home(request):
     musicDir = os.path.join(BASE_DIR, "music")
     files = os.listdir(musicDir + "/homework") + os.listdir(musicDir + "/pop:dance")
     files = filter( lambda f: not f.startswith('.'), files)
+    files = filter( lambda f: not "'" in f, files)
     shuffle(files)
     return render_to_response('mashmaker/home.html', {"file_list": files})
 
@@ -54,3 +55,12 @@ def player(request):
             json_data = json.dumps({"HTTPRESPONSE":0})
         return HttpResponse(json_data, mimetype="application/json")
 
+
+def getNextChunk(request):
+    if request.method == "GET":
+        mp3 = open(os.path.join(BASE_DIR, "static/test.mp3"), 'r')
+        data = mp3.read()
+        mp3.close()
+        response = HttpResponse(data, mimetype='audio/mpeg3')
+        response['Content-Disposition'] = 'attachment; filename=test.mp3'
+        return response

@@ -7,6 +7,10 @@
   <link rel="stylesheet" type="text/css" href="{% static "css/home.css" %}">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script type="text/javascript" src="{% static "js/home.js" %}"></script>
+  <script src="{% static "js/wavesurfer.js" %}"></script>
+  <script src="{% static "js/webaudio.js" %}"></script>
+  <script src="{% static "js/drawer.js" %}"></script>
+  <script src="{% static "js/drawer.canvas.js" %}"></script>
 </head>
 <body>
 	<div id="pageHead" role="banner">
@@ -17,9 +21,10 @@
 				<div id="contentArea" role="main">
           <div class="contentSection">
             <div class="upload">
-              <div id="response" class="center">Hello</div>
+              <div id="response" class="center"></div>
+              <div id="waveform" class="center"></div>
+              <div id="waveform2" class="center"></div>
               <h2 class="uploadTitle">Upload a file...</h2>
-              <div id="preview"><audio id="player" controls="controls"></div>
               <form enctype="multipart/form-data">
                 <input id="longInput" type="text">
                 <input id="fileInput" type="file" name="filename" accept=".mp3">
@@ -28,7 +33,7 @@
                 {% for filename in file_list %}
                   <div>
 
-                    <a href="#" onclick="chooseSong('{{ filename }}')">{{ filename }}</a>
+                    <a href="#" onclick="autoUpload('{{ filename }}')">{{ filename }}</a>
                   </div>
                 {% endfor %}
             </div>
